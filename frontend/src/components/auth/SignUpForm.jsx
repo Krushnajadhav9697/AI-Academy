@@ -1,5 +1,35 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 export default function SignUpForm() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage("");
+    try {
+      const response = await fetch("http://localhost:8000/api/signup/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        setMessage("✅ Registration email sent. Please check your inbox!");
+        setEmail(""); // clear the form
+      } else {
+        const data = await response.json();
+        setMessage(`❌ ${data.error || "Failed to send email."}`);
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage("❌ Something went wrong. Please try again.");
+    }
+    setLoading(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#f4f7fb] flex flex-col items-center justify-center px-4">
       {/* Title */}
@@ -19,7 +49,7 @@ export default function SignUpForm() {
         </div>
 
         {/* Email Form */}
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-semibold mb-1" htmlFor="email">
               Email Address
@@ -27,17 +57,29 @@ export default function SignUpForm() {
             <input
               id="email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-[#f35f66] hover:bg-[#e94b52] text-white font-semibold py-2 rounded-lg transition"
+            disabled={loading}
+            className={`w-full ${
+              loading ? "bg-gray-400" : "bg-[#f35f66] hover:bg-[#e94b52]"
+            } text-white font-semibold py-2 rounded-lg transition`}
           >
-            Sign up
+            {loading ? "Sending..." : "Sign up"}
           </button>
         </form>
+
+        {/* Success/Error Message */}
+        {message && (
+          <div className="mt-4 text-center text-sm text-gray-700">
+            {message}
+          </div>
+        )}
 
         {/* Terms */}
         <div className="mt-4 text-xs text-center text-gray-500">
@@ -56,8 +98,8 @@ export default function SignUpForm() {
       {/* Redirect to Sign In */}
       <p className="mt-4 text-sm text-gray-700 text-center">
         Already have an account?{" "}
-        <Link to="/signin">
-          <a className="text-blue-700 font-medium underline">Sign in here!</a>
+        <Link to="/signin" className="text-blue-700 font-medium underline">
+          Sign in here!
         </Link>
       </p>
     </div>
