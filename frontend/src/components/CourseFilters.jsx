@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
 import { collaborators, topics } from "../components/lib/constsnt";
+
 const CourseFilters = () => {
   const [showAllTopics, setShowAllTopics] = useState(false);
   const [showAllCollaborators, setShowAllCollaborators] = useState(false);

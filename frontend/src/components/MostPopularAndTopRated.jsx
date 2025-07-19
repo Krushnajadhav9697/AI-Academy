@@ -17,8 +17,8 @@ const MostPopularAndTopRated = () => {
           onClick={() => setActiveTab("popular")}
           className={`py-2 px-4 text-sm font-medium ${
             activeTab === "popular"
-              ? "border-b-2 border-blue-600 text-blue-600"
-              : "text-gray-600 hover:text-blue-600"
+              ? "border-b-2 border-[#3D74B6] text-[#3D74B6]"
+              : "text-gray-600 hover:text-[#3D74B6]"
           }`}
         >
           Most Popular
@@ -27,8 +27,8 @@ const MostPopularAndTopRated = () => {
           onClick={() => setActiveTab("topRated")}
           className={`py-2 px-4 text-sm font-medium ${
             activeTab === "topRated"
-              ? "border-b-2 border-blue-600 text-blue-600"
-              : "text-gray-600 hover:text-blue-600"
+              ? "border-b-2 border-[#3D74B6] text-[#3D74B6]"
+              : "text-gray-600 hover:text-[#3D74B6]"
           }`}
         >
           Top Rated

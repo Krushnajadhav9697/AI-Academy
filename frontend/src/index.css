@@ -1,1 +1,12 @@
 @import "tailwindcss";
+/* 🌟 Custom scrollbar for filters */
+aside::-webkit-scrollbar {
+  width: 6px;
+}
+aside::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* Tailwind gray-400 */
+  border-radius: 4px;
+}
+aside::-webkit-scrollbar-track {
+  background: transparent;
+}

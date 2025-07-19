@@ -41,7 +41,7 @@ export default function Footer() {
           <Link to="/">
             <a className="hover:underline">Playground</a>
           </Link>
-          <Link to="/">
+          <Link to="/join">
             <a className="hover:underline">Join</a>
           </Link>
         </div>
