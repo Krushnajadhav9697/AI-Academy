@@ -14,23 +14,32 @@ export default function SignInForm() {
     setMessage("");
 
     try {
-      const response = await fetch("http://localhost:8000/api/login/", {
+      // ✅ Send POST to Django JWT TokenObtainPair endpoint
+      const response = await fetch("http://127.0.0.1:8000/api/token/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          email: email, // ✅ Use "email" instead of "username"
+          email: email.trim(),
           password: password,
         }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.token); // Save token in localStorage
-        setMessage("✅ Login successful! Redirecting...");
-        setTimeout(() => navigate("/"), 1500); // Redirect to dashboard
+        // ✅ Store tokens & user email in localStorage
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("user_email", email.trim());
+
+        navigate("/"); // Go to homepage
+        window.location.reload(); // 🔄 Refresh Navbar UI
       } else {
-        const data = await response.json();
-        setMessage(`❌ ${data.error || "Invalid email or password"}`);
+        const errorMessage =
+          data.detail || data.error || "❌ Invalid email or password.";
+        setMessage(errorMessage);
       }
     } catch (error) {
       console.error(error);
@@ -51,7 +60,7 @@ export default function SignInForm() {
         <div className="flex items-center my-6">
           <div className="flex-grow h-px bg-gray-300" />
           <span className="mx-3 text-gray-500 text-sm">
-            Or, sign in with your email
+            Or sign in with your email
           </span>
           <div className="flex-grow h-px bg-gray-300" />
         </div>
@@ -107,9 +116,9 @@ export default function SignInForm() {
 
         {/* Links */}
         <div className="mt-4 text-sm text-center">
-          <a href="#" className="text-gray-600 hover:underline">
+          <span className="text-gray-600 hover:underline cursor-pointer">
             Forgot password?
-          </a>
+          </span>
         </div>
         <div className="mt-2 text-sm text-center">
           Don&apos;t have an account?{" "}
@@ -124,13 +133,13 @@ export default function SignInForm() {
         {/* Terms */}
         <div className="mt-4 text-xs text-center text-gray-500">
           By signing in, you agree to our{" "}
-          <a href="#" className="text-blue-600 underline">
+          <span className="text-blue-600 underline cursor-pointer">
             Terms Of Use
-          </a>{" "}
+          </span>{" "}
           and{" "}
-          <a href="#" className="text-blue-600 underline">
+          <span className="text-blue-600 underline cursor-pointer">
             Privacy Policy
-          </a>
+          </span>
           .
         </div>
       </div>

@@ -29,20 +29,20 @@ export default function Footer() {
           className="flex flex-wrap justify-center gap-4 sm:gap-6 text-[#ef5f66] 
           font-medium text-base sm:text-lg text-center"
         >
-          <Link to="/courses">
-            <a className="hover:underline">Courses</a>
+          <Link to="/courses" className="hover:underline">
+            Courses
           </Link>
-          <Link to="/">
-            <a className="hover:underline">Home</a>
+          <Link to="/" className="hover:underline">
+            Home
           </Link>
-          <Link to="/">
-            <a className="hover:underline">About</a>
+          <Link to="/" className="hover:underline">
+            About
           </Link>
-          <Link to="/">
-            <a className="hover:underline">Playground</a>
+          <Link to="/" className="hover:underline">
+            Playground
           </Link>
-          <Link to="/join">
-            <a className="hover:underline">Join</a>
+          <Link to="/join" className="hover:underline">
+            Join
           </Link>
         </div>
 

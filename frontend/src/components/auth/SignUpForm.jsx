@@ -1,27 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage("");
+
     try {
-      const response = await fetch("http://localhost:8000/api/signup/", {
+      // Send signup request
+      const response = await fetch("http://127.0.0.1:8000/api/signup/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: email.trim() }),
       });
+
       if (response.ok) {
-        setMessage("✅ Registration email sent. Please check your inbox!");
-        setEmail(""); // clear the form
+        setMessage("✅ Verification email sent. Please check your inbox!");
+        setEmail("");
+        setTimeout(() => navigate("/signin"), 1500);
       } else {
-        const data = await response.json();
-        setMessage(`❌ ${data.error || "Failed to send email."}`);
+        const text = await response.text();
+        try {
+          const data = JSON.parse(text);
+          setMessage(
+            `❌ ${data.error || "Failed to send verification email."}`
+          );
+        } catch {
+          setMessage(`❌ Server error: ${response.status}`);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -32,26 +44,15 @@ export default function SignUpForm() {
 
   return (
     <div className="min-h-screen bg-[#f4f7fb] flex flex-col items-center justify-center px-4">
-      {/* Title */}
       <h1 className="text-2xl sm:text-3xl font-semibold mb-6 text-center text-gray-800">
         Create Your Account
       </h1>
 
-      {/* Form Card */}
       <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-md">
-        {/* Divider */}
-        <div className="flex items-center my-6">
-          <div className="flex-grow h-px bg-gray-300" />
-          <span className="mx-3 text-gray-500 text-sm">
-            Or, sign up with your email
-          </span>
-          <div className="flex-grow h-px bg-gray-300" />
-        </div>
-
-        {/* Email Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
+          {/* Email */}
           <div>
-            <label className="block text-sm font-semibold mb-1" htmlFor="email">
+            <label htmlFor="email" className="block text-sm font-semibold mb-1">
               Email Address
             </label>
             <input
@@ -63,6 +64,8 @@ export default function SignUpForm() {
               required
             />
           </div>
+
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
@@ -84,18 +87,18 @@ export default function SignUpForm() {
         {/* Terms */}
         <div className="mt-4 text-xs text-center text-gray-500">
           By signing up, you agree to our{" "}
-          <a href="#" className="text-blue-600 underline">
+          <span className="text-blue-600 underline cursor-pointer">
             Terms Of Use
-          </a>{" "}
+          </span>{" "}
           and{" "}
-          <a href="#" className="text-blue-600 underline">
+          <span className="text-blue-600 underline cursor-pointer">
             Privacy Policy
-          </a>
+          </span>
           .
         </div>
       </div>
 
-      {/* Redirect to Sign In */}
+      {/* Link to Sign In */}
       <p className="mt-4 text-sm text-gray-700 text-center">
         Already have an account?{" "}
         <Link to="/signin" className="text-blue-700 font-medium underline">

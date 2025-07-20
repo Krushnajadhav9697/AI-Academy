@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ActivateAccount() {
-  const { token } = useParams(); // ✅ Get activation token from URL
+  const { token } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -11,13 +11,12 @@ export default function ActivateAccount() {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -25,7 +24,7 @@ export default function ActivateAccount() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/activate/${token}/`, // ✅ Updated API endpoint
+        `http://127.0.0.1:8000/api/activate/${token}/`,
         {
           method: "POST",
           headers: {
@@ -35,96 +34,105 @@ export default function ActivateAccount() {
         }
       );
 
+      const data = await response.json();
+
       if (!response.ok) {
-        // Try to parse JSON error
-        const data = await response.json().catch(() => null);
         const errorMsg =
           data?.error ||
-          `Activation failed (status ${response.status}). Please try again.`;
-        setMessage(`❌ ${errorMsg}`);
+          `❌ Activation failed (status ${response.status}). Please try again.`;
+        setMessage(errorMsg);
       } else {
-        const data = await response.json();
+        setSuccess(true);
         setMessage(`✅ ${data.message || "Account activated successfully!"}`);
-        setTimeout(() => navigate("/signin"), 2000); // Redirect to sign-in
+
+        setTimeout(() => navigate("/signin"), 2000);
       }
     } catch (error) {
       console.error("Activation error:", error);
-      setMessage("❌ Something went wrong. Please try again later.");
+      setMessage("❌ Network error. Please try again later.");
     }
+
     setLoading(false);
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">
-          Complete Registration
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
+      <div className="bg-white shadow-lg rounded-xl px-6 py-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-4 text-center text-gray-800">
+          Complete Your Registration
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-1">
+            <label
+              className="block text-sm font-medium text-gray-700 mb-1"
+              htmlFor="name"
+            >
               Full Name
             </label>
             <input
+              id="name"
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Enter your full name"
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
               required
             />
           </div>
 
-          {/* Job Title */}
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-1">
+            <label
+              className="block text-sm font-medium text-gray-700 mb-1"
+              htmlFor="job_title"
+            >
               Job Title (Optional)
             </label>
             <input
+              id="job_title"
               type="text"
               name="job_title"
               value={formData.job_title}
               onChange={handleChange}
               placeholder="Your job title"
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
 
-          {/* Password */}
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-1">
+            <label
+              className="block text-sm font-medium text-gray-700 mb-1"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
+              id="password"
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Set a password"
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-green-400"
+              placeholder="Set a strong password"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
               required
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className={`w-full mt-2 ${
+            className={`w-full ${
               loading ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
-            } text-white font-bold py-2 px-4 rounded transition`}
+            } text-white font-bold py-2 px-4 rounded-lg transition duration-200`}
           >
-            {loading ? "Submiting..." : "Submit"}
+            {loading ? "Submitting..." : "Activate Account"}
           </button>
 
-          {/* Success/Error Message */}
           {message && (
             <p
-              className={`mt-3 text-center font-medium ${
-                message.startsWith("✅") ? "text-green-600" : "text-red-600"
+              className={`mt-4 text-center font-medium ${
+                success ? "text-green-600" : "text-red-600"
               }`}
             >
               {message}
