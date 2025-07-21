@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -42,15 +44,55 @@ export default function SignUpForm() {
     setLoading(false);
   };
 
+  // Dummy handlers for social login
+  const handleGoogleLogin = () => {
+    alert("Google Sign Up Clicked!");
+  };
+
+  const handleLinkedInLogin = () => {
+    alert("LinkedIn Sign Up Clicked!");
+  };
+
   return (
     <div className="min-h-screen bg-[#f4f7fb] flex flex-col items-center justify-center px-4">
       <h1 className="text-2xl sm:text-3xl font-semibold mb-6 text-center text-gray-800">
         Create Your Account
       </h1>
 
-      <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-md">
+      <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-sm">
+        {/* Social Signup Buttons */}
+        <div className="space-y-3 mb-6">
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
+          >
+            <FcGoogle size={20} />
+            <span className="text-sm font-medium text-gray-700">
+              Continue with Google
+            </span>
+          </button>
+          <button
+            onClick={handleLinkedInLogin}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
+          >
+            <FaLinkedin size={20} className="text-blue-600" />
+            <span className="text-sm font-medium text-gray-700">
+              Continue with LinkedIn
+            </span>
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className="flex items-center mb-6">
+          <div className="flex-grow h-px bg-gray-300" />
+          <span className="mx-3 text-gray-500 text-sm">
+            Or sign up with your email
+          </span>
+          <div className="flex-grow h-px bg-gray-300" />
+        </div>
+
+        {/* Email Signup Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
-          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-semibold mb-1">
               Email Address

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
@@ -14,7 +16,6 @@ export default function SignInForm() {
     setMessage("");
 
     try {
-      // ✅ Send POST to Django JWT TokenObtainPair endpoint
       const response = await fetch("http://127.0.0.1:8000/api/token/", {
         method: "POST",
         headers: {
@@ -29,13 +30,12 @@ export default function SignInForm() {
       const data = await response.json();
 
       if (response.ok) {
-        // ✅ Store tokens & user email in localStorage
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
         localStorage.setItem("user_email", email.trim());
 
-        navigate("/"); // Go to homepage
-        window.location.reload(); // 🔄 Refresh Navbar UI
+        navigate("/");
+        window.location.reload();
       } else {
         const errorMessage =
           data.detail || data.error || "❌ Invalid email or password.";
@@ -49,23 +49,54 @@ export default function SignInForm() {
     setLoading(false);
   };
 
+  // Dummy handlers for social login
+  const handleGoogleLogin = () => {
+    alert("Google Login Clicked!");
+  };
+
+  const handleLinkedInLogin = () => {
+    alert("LinkedIn Login Clicked!");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4f7fb] p-4">
-      <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-md">
+      <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-sm">
         <h1 className="text-2xl font-semibold text-center text-gray-800 mb-4">
           Sign In to Your Account
         </h1>
+
+        {/* Social Login Buttons */}
+        <div className="space-y-3">
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
+          >
+            <FcGoogle size={20} />
+            <span className="text-sm font-medium text-gray-700">
+              Continue with Google
+            </span>
+          </button>
+          <button
+            onClick={handleLinkedInLogin}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
+          >
+            <FaLinkedin size={20} className="text-blue-600" />
+            <span className="text-sm font-medium text-gray-700">
+              Continue with LinkedIn
+            </span>
+          </button>
+        </div>
 
         {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-grow h-px bg-gray-300" />
           <span className="mx-3 text-gray-500 text-sm">
-            Or sign in with your email
+            Or, sign in with your email
           </span>
           <div className="flex-grow h-px bg-gray-300" />
         </div>
 
-        {/* Form */}
+        {/* Email/Password Form */}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-semibold mb-1" htmlFor="email">
@@ -109,9 +140,7 @@ export default function SignInForm() {
 
         {/* Success/Error Message */}
         {message && (
-          <div className="mt-4 text-center text-sm text-gray-700">
-            {message}
-          </div>
+          <div className="mt-4 text-center text-sm text-red-600">{message}</div>
         )}
 
         {/* Links */}
@@ -132,7 +161,7 @@ export default function SignInForm() {
 
         {/* Terms */}
         <div className="mt-4 text-xs text-center text-gray-500">
-          By signing in, you agree to our{" "}
+          By signing up, you agree to our{" "}
           <span className="text-blue-600 underline cursor-pointer">
             Terms Of Use
           </span>{" "}
