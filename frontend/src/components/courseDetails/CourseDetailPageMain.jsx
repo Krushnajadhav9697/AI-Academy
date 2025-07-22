@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { courseData } from "../components/lib/constsnt";
-import SpecializationDetail from "../components/CourseDetails/SpecializationDetail";
-import ShortCourseDetail from "../components/CourseDetails/ShortCourseDetail";
-import CourseDetail from "../components/CourseDetails/CourseDetail";
+import { courseData } from "../lib/constsnt";
+import SpecializationDetail from "./SpecializationDetail";
+import ShortCourseDetail from "./ShortCourseDetail";
+import CourseDetail from "./CourseDetail";
 
-const CourseDetailPage = () => {
+const CourseDetailPageMain = () => {
   const { id } = useParams();
   const course = courseData.find((c) => c.id === parseInt(id));
 
@@ -24,4 +24,4 @@ const CourseDetailPage = () => {
   }
 };
 
-export default CourseDetailPage;
+export default CourseDetailPageMain;

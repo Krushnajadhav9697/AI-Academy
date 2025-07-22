@@ -49,10 +49,6 @@ export default function SignUpForm() {
     alert("Google Sign Up Clicked!");
   };
 
-  const handleLinkedInLogin = () => {
-    alert("LinkedIn Sign Up Clicked!");
-  };
-
   return (
     <div className="min-h-screen bg-[#f4f7fb] flex flex-col items-center justify-center px-4">
       <h1 className="text-2xl sm:text-3xl font-semibold mb-6 text-center text-gray-800">
@@ -69,15 +65,6 @@ export default function SignUpForm() {
             <FcGoogle size={20} />
             <span className="text-sm font-medium text-gray-700">
               Continue with Google
-            </span>
-          </button>
-          <button
-            onClick={handleLinkedInLogin}
-            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
-          >
-            <FaLinkedin size={20} className="text-blue-600" />
-            <span className="text-sm font-medium text-gray-700">
-              Continue with LinkedIn
             </span>
           </button>
         </div>

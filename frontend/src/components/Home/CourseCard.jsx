@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const CourseCard = ({
+  id,
   image,
   title,
   type,
@@ -18,9 +20,14 @@ const CourseCard = ({
 
   const badgeColor = badgeColors[type] || "bg-gray-400";
 
+  const navigate = useNavigate();
+
   if (variant === "main") {
     return (
-      <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 w-full hover:shadow-lg transition-transform duration-300 hover:scale-105">
+      <div
+        className="bg-white rounded-xl shadow-md border border-gray-200 p-4 w-full hover:shadow-lg transition-transform duration-300 hover:scale-105"
+        onClick={() => navigate(`/course/${id}`)}
+      >
         {/* Badge */}
         <span
           className={`inline-block text-xs font-semibold text-white ${badgeColor} rounded px-2 py-1 mb-2`}

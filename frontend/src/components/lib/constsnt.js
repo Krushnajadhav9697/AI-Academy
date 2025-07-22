@@ -22,7 +22,105 @@ export const courseData = [
     image: course_img,
     collaboratorName: "OpenAI",
     collaboratorLogo: openai,
+    whatYouWillLearn: [
+      "Understand the core architecture of voice agents, including the trade-offs between modular pipelines and real-time APIs, and how components like STT, LLMs, and TTS work together.",
+      "Build and deploy a voice agent that handles speech input, generates LLM responses, and replies using custom voices while managing latency and user interruptions.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+    ],
+    aboutCourse: `Join Building AI Voice Agents for Production, created in collaboration with LiveKit and RealAvatar, and taught by Russ d’Sa (Co-founder & CEO of LiveKit), Shayne Parmelee (Developer Advocate, LiveKit), and Nedelina Teneva (Head of AI at RealAvatar, an AI Fund portfolio company). The course also incorporates voice technology from ElevenLabs, a supporting contributor to the project.
+
+Voice agents combine speech and reasoning capabilities to enable real-time, human-like conversations. They’re already being used to enhance learning, support customer service, and improve accessibility in healthcare and talk therapy.
+
+In this course, you’ll learn how to build voice agents that listen, reason, and respond naturally. You’ll follow the architecture used to create Andrew Avatar, a collaborative project between DeepLearning.AI and RealAvatar that responds to users in Andrew Ng’s voice. You’ll build a voice agent from scratch and deploy it to the cloud, enabling support for many simultaneous users.
+
+By the end of this course, you’ll have learned the components of an AI voice agent pipeline, combined them into a system with low-latency communication, and deployed them on cloud infrastructure so it scales to many users.`,
+    whoShouldJoin:
+      "Anyone who wants to build conversational voice applications using LLMs. You’ll get the most out of this course if you’re already familiar with basic Python and foundational AI workflows.",
+    courseOutline: [
+      {
+        title: "Introduction",
+        type: "Video",
+        duration: "3 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      { title: "Why MCP", type: "Video", duration: "7 mins", hasCode: false },
+      {
+        title: "MCP Architecture",
+        type: "Video",
+        duration: "14 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Chatbot Example",
+        type: "Video",
+        duration: "7 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Creating MCP Server",
+        type: "Video",
+        duration: "8 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Creating MCP Client",
+        type: "Video",
+        duration: "9 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Connecting Chatbot to Reference Server",
+        type: "Video",
+        duration: "12 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Prompt & Resource Features",
+        type: "Video",
+        duration: "11 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Claude Desktop Setup",
+        type: "Video",
+        duration: "6 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Deploying Remote Servers",
+        type: "Video",
+        duration: "7 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Conclusion",
+        type: "Video",
+        duration: "9 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      { title: "Quiz", type: "Quiz", duration: "1 min", hasCode: false },
+      {
+        title: "Appendix – Tips & Help",
+        type: "Reading",
+        duration: "—",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+    ],
   },
+
   {
     id: 3,
     title: "Generative AI for Software Development",
@@ -42,6 +140,101 @@ export const courseData = [
     image: course_img,
     collaboratorName: "AI-Academy",
     collaboratorLogo: openai,
+    whatYouWillLearn: [
+      "Understand the core architecture of voice agents, including the trade-offs between modular pipelines and real-time APIs, and how components like STT, LLMs, and TTS work together.",
+      "Build and deploy a voice agent that handles speech input, generates LLM responses, and replies using custom voices while managing latency and user interruptions.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+    ],
+    aboutCourse: `Join Building AI Voice Agents for Production, created in collaboration with LiveKit and RealAvatar, and taught by Russ d’Sa (Co-founder & CEO of LiveKit), Shayne Parmelee (Developer Advocate, LiveKit), and Nedelina Teneva (Head of AI at RealAvatar, an AI Fund portfolio company). The course also incorporates voice technology from ElevenLabs, a supporting contributor to the project.
+
+Voice agents combine speech and reasoning capabilities to enable real-time, human-like conversations. They’re already being used to enhance learning, support customer service, and improve accessibility in healthcare and talk therapy.
+
+In this course, you’ll learn how to build voice agents that listen, reason, and respond naturally. You’ll follow the architecture used to create Andrew Avatar, a collaborative project between DeepLearning.AI and RealAvatar that responds to users in Andrew Ng’s voice. You’ll build a voice agent from scratch and deploy it to the cloud, enabling support for many simultaneous users.
+
+By the end of this course, you’ll have learned the components of an AI voice agent pipeline, combined them into a system with low-latency communication, and deployed them on cloud infrastructure so it scales to many users.`,
+    whoShouldJoin:
+      "Anyone who wants to build conversational voice applications using LLMs. You’ll get the most out of this course if you’re already familiar with basic Python and foundational AI workflows.",
+    courseOutline: [
+      {
+        title: "Introduction 2nd",
+        type: "Video",
+        duration: "3 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      { title: "Why MCP", type: "Video", duration: "7 mins", hasCode: false },
+      {
+        title: "MCP Architecture",
+        type: "Video",
+        duration: "14 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Chatbot Example",
+        type: "Video",
+        duration: "7 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Creating MCP Server",
+        type: "Video",
+        duration: "8 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Creating MCP Client",
+        type: "Video",
+        duration: "9 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Connecting Chatbot to Reference Server",
+        type: "Video",
+        duration: "12 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Prompt & Resource Features",
+        type: "Video",
+        duration: "11 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Claude Desktop Setup",
+        type: "Video",
+        duration: "6 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Deploying Remote Servers",
+        type: "Video",
+        duration: "7 mins",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      {
+        title: "Conclusion",
+        type: "Video",
+        duration: "9 mins",
+        hasCode: false,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+      { title: "Quiz", type: "Quiz", duration: "1 min", hasCode: false },
+      {
+        title: "Appendix – Tips & Help",
+        type: "Reading",
+        duration: "—",
+        hasCode: true,
+        videoUrl: "https://www.youtube.com/embed/arch789",
+      },
+    ],
   },
   {
     id: 5,
@@ -74,6 +267,20 @@ export const courseData = [
     image: course_img,
     collaboratorName: "OpenAI",
     collaboratorLogo: openai,
+    whatYouWillLearn: [
+      "Understand the core architecture of voice agents, including the trade-offs between modular pipelines and real-time APIs, and how components like STT, LLMs, and TTS work together.",
+      "Build and deploy a voice agent that handles speech input, generates LLM responses, and replies using custom voices while managing latency and user interruptions.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+    ],
+    aboutCourse: `Join Building AI Voice Agents for Production, created in collaboration with LiveKit and RealAvatar, and taught by Russ d’Sa (Co-founder & CEO of LiveKit), Shayne Parmelee (Developer Advocate, LiveKit), and Nedelina Teneva (Head of AI at RealAvatar, an AI Fund portfolio company). The course also incorporates voice technology from ElevenLabs, a supporting contributor to the project.
+
+Voice agents combine speech and reasoning capabilities to enable real-time, human-like conversations. They’re already being used to enhance learning, support customer service, and improve accessibility in healthcare and talk therapy.
+
+In this course, you’ll learn how to build voice agents that listen, reason, and respond naturally. You’ll follow the architecture used to create Andrew Avatar, a collaborative project between DeepLearning.AI and RealAvatar that responds to users in Andrew Ng’s voice. You’ll build a voice agent from scratch and deploy it to the cloud, enabling support for many simultaneous users.
+
+By the end of this course, you’ll have learned the components of an AI voice agent pipeline, combined them into a system with low-latency communication, and deployed them on cloud infrastructure so it scales to many users.`,
+    whoShouldJoin:
+      "Anyone who wants to build conversational voice applications using LLMs. You’ll get the most out of this course if you’re already familiar with basic Python and foundational AI workflows.",
   },
   {
     id: 8,
@@ -104,197 +311,20 @@ export const courseData = [
     image: course_img,
     collaboratorName: "AI-Academy",
     collaboratorLogo: openai,
-  },
-  {
-    id: 11,
-    title: "Natural Language Processing Essentials",
-    type: "Course",
-    description:
-      "Get started with NLP techniques like tokenization, embeddings, and transformers.",
-    image: course_img,
-    collaboratorName: "Hugging Face",
-    collaboratorLogo: huggingface,
-  },
-  {
-    id: 12,
-    title: "Deep Learning with TensorFlow",
-    type: "Specialization",
-    description:
-      "Master deep learning with hands-on TensorFlow projects and model optimization.",
-    image: course_img,
-    collaboratorName: "Stanford Online",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 13,
-    title: "AI Security Best Practices",
-    type: "Short Course",
-    description:
-      "Learn how to secure AI applications and manage risks in deployment.",
-    image: course_img,
-    collaboratorName: "AWS",
-    collaboratorLogo: AWS,
-  },
-  {
-    id: 14,
-    title: "Ethics in Artificial Intelligence",
-    type: "Course",
-    description:
-      "Understand ethical considerations in building and deploying AI solutions.",
-    image: course_img,
-    collaboratorName: "OpenAI",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 15,
-    title: "Reinforcement Learning Basics",
-    type: "Specialization",
-    description:
-      "Dive into reinforcement learning with practical projects and case studies.",
-    image: course_img,
-    collaboratorName: "Meta",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 16,
-    title: "Cloud AI Deployment",
-    type: "Short Course",
-    description: "Learn to deploy AI models on AWS, Azure, and GCP platforms.",
-    image: course_img,
-    collaboratorName: "AWS",
-    collaboratorLogo: AWS,
-  },
-  {
-    id: 17,
-    title: "Generative AI for Designers",
-    type: "Course",
-    description:
-      "Learn how designers can use generative AI tools to enhance creativity.",
-    image: course_img,
-    collaboratorName: "Hugging Face",
-    collaboratorLogo: huggingface,
-  },
-  {
-    id: 18,
-    title: "Big Data for AI",
-    type: "Specialization",
-    description:
-      "Explore big data concepts and their integration with AI systems.",
-    image: course_img,
-    collaboratorName: "Stanford Online",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 19,
-    title: "AI in Healthcare",
-    type: "Short Course",
-    description:
-      "Learn about AI applications in diagnostics, patient care, and drug discovery.",
-    image: course_img,
-    collaboratorName: "AI-Academy",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 20,
-    title: "Time Series Forecasting",
-    type: "Course",
-    description:
-      "Master time series analysis techniques using Python libraries.",
-    image: course_img,
-    collaboratorName: "AWS",
-    collaboratorLogo: AWS,
-  },
-  {
-    id: 21,
-    title: "Conversational AI with Chatbots",
-    type: "Specialization",
-    description: "Design and build intelligent chatbots with NLP techniques.",
-    image: course_img,
-    collaboratorName: "Hugging Face",
-    collaboratorLogo: huggingface,
-  },
-  {
-    id: 22,
-    title: "Explainable AI (XAI)",
-    type: "Short Course",
-    description: "Learn to make AI systems transparent and interpretable.",
-    image: course_img,
-    collaboratorName: "Meta",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 23,
-    title: "AI for Edge Devices",
-    type: "Course",
-    description: "Deploy AI models efficiently on low-resource edge devices.",
-    image: course_img,
-    collaboratorName: "AWS",
-    collaboratorLogo: AWS,
-  },
-  {
-    id: 24,
-    title: "Vision AI Applications",
-    type: "Specialization",
-    description:
-      "Develop computer vision solutions for real-world applications.",
-    image: course_img,
-    collaboratorName: "Hugging Face",
-    collaboratorLogo: huggingface,
-  },
-  {
-    id: 25,
-    title: "Applied Data Science",
-    type: "Short Course",
-    description: "Use data science techniques to solve real-world problems.",
-    image: course_img,
-    collaboratorName: "Stanford Online",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 26,
-    title: "AI Model Optimization",
-    type: "Course",
-    description: "Optimize and compress AI models for faster performance.",
-    image: course_img,
-    collaboratorName: "AI-Academy",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 27,
-    title: "Speech Recognition Systems",
-    type: "Specialization",
-    description: "Build speech-to-text systems and integrate voice interfaces.",
-    image: course_img,
-    collaboratorName: "OpenAI",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 28,
-    title: "AI for IoT",
-    type: "Short Course",
-    description: "Combine AI with IoT to create intelligent connected systems.",
-    image: course_img,
-    collaboratorName: "AWS",
-    collaboratorLogo: AWS,
-  },
-  {
-    id: 29,
-    title: "Human-Centered AI",
-    type: "Course",
-    description:
-      "Design AI systems with a focus on user experience and usability.",
-    image: course_img,
-    collaboratorName: "Meta",
-    collaboratorLogo: openai,
-  },
-  {
-    id: 30,
-    title: "AI for Robotics",
-    type: "Specialization",
-    description: "Learn how AI powers autonomous robots and robotic systems.",
-    image: course_img,
-    collaboratorName: "Hugging Face",
-    collaboratorLogo: huggingface,
+    whatYouWillLearn: [
+      "Understand the core architecture of voice agents, including the trade-offs between modular pipelines and real-time APIs, and how components like STT, LLMs, and TTS work together.",
+      "Build and deploy a voice agent that handles speech input, generates LLM responses, and replies using custom voices while managing latency and user interruptions.",
+      "Measure and optimize latency across your voice pipeline, and apply strategies to make your agent feel more natural, responsive, and scalable in real-world settings.",
+    ],
+    aboutCourse: `Join Building AI Voice Agents for Production, created in collaboration with LiveKit and RealAvatar, and taught by Russ d’Sa (Co-founder & CEO of LiveKit), Shayne Parmelee (Developer Advocate, LiveKit), and Nedelina Teneva (Head of AI at RealAvatar, an AI Fund portfolio company). The course also incorporates voice technology from ElevenLabs, a supporting contributor to the project.
+
+Voice agents combine speech and reasoning capabilities to enable real-time, human-like conversations. They’re already being used to enhance learning, support customer service, and improve accessibility in healthcare and talk therapy.
+
+In this course, you’ll learn how to build voice agents that listen, reason, and respond naturally. You’ll follow the architecture used to create Andrew Avatar, a collaborative project between DeepLearning.AI and RealAvatar that responds to users in Andrew Ng’s voice. You’ll build a voice agent from scratch and deploy it to the cloud, enabling support for many simultaneous users.
+
+By the end of this course, you’ll have learned the components of an AI voice agent pipeline, combined them into a system with low-latency communication, and deployed them on cloud infrastructure so it scales to many users.`,
+    whoShouldJoin:
+      "Anyone who wants to build conversational voice applications using LLMs. You’ll get the most out of this course if you’re already familiar with basic Python and foundational AI workflows.",
   },
 ];
 
@@ -429,4 +459,167 @@ export const collaborators = [
   "Weights and Biases",
   "WhyLabs",
   "Windsurf",
+];
+
+//my learning
+
+export const coursesYouMightLike = [
+  {
+    id: 1,
+    title: "Post-training of LLMs",
+    type: "Short Course · 1 hour 16 mins",
+    description:
+      "Adapt LLMs for specific tasks and behaviors using post-training.",
+    image: course_img,
+    collaborators: [
+      {
+        name: "University of Washington",
+        logo: AWS,
+      },
+      {
+        name: "NexusFlow",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 2,
+    title: "ACP: Agent Communication Protocol",
+    type: "Short Course · 1 hour 41 mins",
+    description:
+      "Learn how autonomous agents communicate effectively and securely.",
+    image: course_img,
+    collaborators: [
+      {
+        name: "IBM Research's BeeAI",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 3,
+    title: "Building with Llama 4",
+    type: "Short Course · 1 hour",
+    description:
+      "Understand and build applications with Meta’s Llama 4, covering setup",
+    image: course_img,
+    collaborators: [
+      {
+        name: "Meta",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 4,
+    title: "Introduction to Generative AI",
+    type: "Short Course · 50 mins",
+    description:
+      "Discover the fundamentals of generative AI and how models like GPT..",
+    image: course_img,
+    collaborators: [
+      {
+        name: "OpenAI",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 5,
+    title: "Ethics in AI Development",
+    type: "Short Course · 45 mins",
+    description:
+      "Explore the ethical considerations and challenges involved in building AI.",
+    image: course_img,
+    collaborators: [
+      {
+        name: "Stanford University",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 6,
+    title: "Deploying AI Applications",
+    type: "Short Course · 1 hour 10 mins",
+    description:
+      "Learn how to deploy AI-powered applications efficiently using.",
+    image: course_img,
+    collaborators: [
+      {
+        name: "Google Cloud",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
+  {
+    id: 7,
+    title: "Fine-Tuning Transformers",
+    type: "Short Course · 1 hour 30 mins",
+    description:
+      "Master fine-tuning techniques for transformer-based models for NLP.",
+    image: course_img,
+    collaborators: [
+      {
+        name: "Hugging Face",
+        logo: AWS,
+      },
+    ],
+    tags: [
+      "AI Frameworks",
+      "Agents",
+      "Security",
+      "AI Frameworks",
+      "Agents",
+      "Security",
+    ],
+  },
 ];

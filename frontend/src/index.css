@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 /* 🌟 Custom scrollbar for filters */
 aside::-webkit-scrollbar {
   width: 6px;
@@ -9,4 +10,14 @@ aside::-webkit-scrollbar-thumb {
 }
 aside::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* my learning */
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

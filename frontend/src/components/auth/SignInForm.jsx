@@ -54,10 +54,6 @@ export default function SignInForm() {
     alert("Google Login Clicked!");
   };
 
-  const handleLinkedInLogin = () => {
-    alert("LinkedIn Login Clicked!");
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4f7fb] p-4">
       <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 w-full max-w-sm">
@@ -74,15 +70,6 @@ export default function SignInForm() {
             <FcGoogle size={20} />
             <span className="text-sm font-medium text-gray-700">
               Continue with Google
-            </span>
-          </button>
-          <button
-            onClick={handleLinkedInLogin}
-            className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
-          >
-            <FaLinkedin size={20} className="text-blue-600" />
-            <span className="text-sm font-medium text-gray-700">
-              Continue with LinkedIn
             </span>
           </button>
         </div>

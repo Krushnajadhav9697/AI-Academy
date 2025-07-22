@@ -29,6 +29,7 @@ const CoursesGrid = () => {
         {courseData.map((course, index) => (
           <CourseCard
             key={course.id || index}
+            id={course.id}
             image={course.image}
             title={course.title}
             type={course.type}
