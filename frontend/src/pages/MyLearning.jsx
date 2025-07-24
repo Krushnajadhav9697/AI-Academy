@@ -4,9 +4,9 @@ import LearningTabs from "../components/mylearning/LearningTabs";
 
 export default function MyLearning() {
   const profile = {
-    name: "Krushna Jadhav",
-    email: "krushnajadhav9697@gmail.com",
-    enrolled: 2,
+    name: "",
+    email: "",
+    enrolled: 0,
     completed: 0,
   };
 

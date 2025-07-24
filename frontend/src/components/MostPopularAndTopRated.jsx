@@ -34,7 +34,7 @@ const MostPopularAndTopRated = () => {
           Top Rated
         </button>
       </div>
-
+            
       {/* Carousel */}
       {activeTab === "popular" && <MpTrCard courses={popularCourses} />}
       {activeTab === "topRated" && <MpTrCard courses={topRatedCourses} />}

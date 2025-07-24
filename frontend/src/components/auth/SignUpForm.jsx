@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaLinkedin } from "react-icons/fa";
+import { useGoogleLogin } from "@react-oauth/google";
+import { googleLogin } from "../../api/auth";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export default function SignUpForm() {
 
     try {
       // Send signup request
-      const response = await fetch("http://127.0.0.1:8000/api/signup/", {
+      const response = await fetch("http://127.0.0.1:8000/users/preregister/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
@@ -44,10 +45,26 @@ export default function SignUpForm() {
     setLoading(false);
   };
 
-  // Dummy handlers for social login
-  const handleGoogleLogin = () => {
-    alert("Google Sign Up Clicked!");
-  };
+  const googleLoginPopup = useGoogleLogin({
+    flow: "implicit",
+    onSuccess: async ({ access_token }) => {
+      setLoading(true);
+      try {
+        const data = await googleLogin(access_token);
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("user_email", data.user.email);
+        localStorage.setItem("user_full_name", data.user.full_name);
+        navigate("/", { replace: true });
+        window.location.reload();
+      } catch (err) {
+        setMessage(err.message || "Google login failed");
+      } finally {
+        setLoading(false);
+      }
+    },
+    onError: () => setMessage("Google login cancelled"),
+  });
 
   return (
     <div className="min-h-screen bg-[#f4f7fb] flex flex-col items-center justify-center px-4">
@@ -59,7 +76,7 @@ export default function SignUpForm() {
         {/* Social Signup Buttons */}
         <div className="space-y-3 mb-6">
           <button
-            onClick={handleGoogleLogin}
+            onClick={googleLoginPopup}
             className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
           >
             <FcGoogle size={20} />

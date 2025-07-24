@@ -48,12 +48,12 @@ export default function CourseSuggestionList() {
       {/* Cards Row */}
       <div
         ref={containerRef}
-        className="flex overflow-x-auto space-x-4 scrollbar-hide scroll-smooth px-6"
+        className="flex overflow-x-auto space-x-4 scrollbar-hide scroll-smooth px-2"
       >
         {coursesYouMightLike.map((course) => (
           <div
             key={course.id}
-            className="transition-all duration-300 flex-shrink-0 mb-4"
+            className="transition-all duration-300 flex-shrink-0 mb-2"
           >
             <CourseSuggestionCard
               title={course.title}

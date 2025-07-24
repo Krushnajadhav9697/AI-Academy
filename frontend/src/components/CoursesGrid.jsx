@@ -34,7 +34,7 @@ const CoursesGrid = () => {
             title={course.title}
             type={course.type}
             description={course.description}
-            collaborators={course.collaborators || []} // ✅ Pass multiple collaborators
+            collaborators={course.collaborators || []}
             collaboratorLogo={course.collaboratorLogo}
             collaboratorName={course.collaboratorName}
             variant="main"

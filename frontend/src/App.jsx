@@ -20,14 +20,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/about" element={<About />} />
         <Route path="/signin" element={<SignInForm />} />
         <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/about" element={<About />} />
         <Route path="/join" element={<Join />} />
         <Route path="/my-learnings" element={<MyLearning />} />
-        <Route path="/activate/:token" element={<ActivateAccount />} />{" "}
-        {/* ✅ Correct */}
-        <Route path="/course/:id" element={<CourseDetailPage />} />
+        <Route path="/activate/:uid/:token" element={<ActivateAccount />} />
+        <Route path="/courses/:id" element={<CourseDetailPage />} />
       </Routes>
     </Router>
   );

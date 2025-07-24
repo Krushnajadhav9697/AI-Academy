@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom"; // ✅ Import Link
 
 const MpTrCard = ({ courses }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,22 +22,17 @@ const MpTrCard = ({ courses }) => {
 
     calculateCardWidth();
     window.addEventListener("resize", calculateCardWidth);
-
     return () => window.removeEventListener("resize", calculateCardWidth);
   }, []);
 
   const maxIndex = courses.length - 1;
 
   const nextSlide = () => {
-    setCurrentIndex(
-      (prev) => (prev < maxIndex ? prev + 1 : prev) // Stop at the last card
-    );
+    setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (prev) => (prev > 0 ? prev - 1 : prev) // Stop at the first card
-    );
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   return (
@@ -61,9 +57,10 @@ const MpTrCard = ({ courses }) => {
           }}
         >
           {courses.map((course, index) => (
-            <div
+            <Link
+              to={`/courses/${course.id}`}
               key={course.id || index}
-              className="carousel-card flex w-[500px] shrink-0 mr-4 rounded-lg shadow bg-white"
+              className="carousel-card flex w-[500px] shrink-0 mr-4 rounded-lg shadow bg-white hover:shadow-lg transition"
             >
               {/* Left: Image */}
               <div className="w-42 h-42 flex-shrink-0 m-4">
@@ -76,22 +73,18 @@ const MpTrCard = ({ courses }) => {
 
               {/* Right: Content */}
               <div className="flex-1 p-4 flex flex-col justify-between">
-                {/* Badge */}
                 <span className="inline-block text-xs font-semibold text-orange-600 bg-orange-100 rounded px-2 py-0.5 mb-2">
                   {course.type}
                 </span>
 
-                {/* Title */}
                 <h3 className="text-lg font-bold text-gray-800 mb-1">
                   {course.title}
                 </h3>
 
-                {/* Description */}
                 <p className="text-gray-600 text-sm mb-3 line-clamp-3">
                   {course.description}
                 </p>
 
-                {/* Collaborators */}
                 <div className="flex items-center space-x-2">
                   {course.collaborators?.map((collab, i) => (
                     <img
@@ -113,7 +106,7 @@ const MpTrCard = ({ courses }) => {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

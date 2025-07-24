@@ -32,7 +32,7 @@ export default function CourseSuggestionCard({
         {/* Title */}
         <h3
           className="text-base font-semibold leading-tight line-clamp-2 mb-1"
-          style={{ minHeight: "2em" }}
+          style={{ minHeight: "3em" }}
         >
           {title}
         </h3>

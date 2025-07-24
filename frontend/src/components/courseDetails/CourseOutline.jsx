@@ -1,4 +1,3 @@
-// components/CourseOutline.jsx
 import React from "react";
 
 const CourseOutline = ({ courseOutline }) => {

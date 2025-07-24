@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function ActivateAccount() {
-  const { token } = useParams();
+  const { uid, token } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
+    full_name: "",
     job_title: "",
     password: "",
   });
@@ -23,16 +23,19 @@ export default function ActivateAccount() {
     setMessage("");
 
     try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/api/activate/${token}/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch("http://127.0.0.1:8000/users/complete/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uidb64: uid,
+          token,
+          full_name: formData.full_name,
+          job_title: formData.job_title,
+          password: formData.password,
+        }),
+      });
 
       const data = await response.json();
 
@@ -71,10 +74,10 @@ export default function ActivateAccount() {
               Full Name
             </label>
             <input
-              id="name"
+              id="full_name"
               type="text"
-              name="name"
-              value={formData.name}
+              name="full_name"
+              value={formData.full_name}
               onChange={handleChange}
               placeholder="Enter your full name"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -87,17 +90,29 @@ export default function ActivateAccount() {
               className="block text-sm font-medium text-gray-700 mb-1"
               htmlFor="job_title"
             >
-              Job Title (Optional)
+              Job Title
             </label>
-            <input
+            <select
               id="job_title"
-              type="text"
               name="job_title"
               value={formData.job_title}
               onChange={handleChange}
-              placeholder="Your job title"
               className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+              required
+            >
+              <option value="" disabled>
+                Select a Job Title
+              </option>
+              <option value="Software Engineer">Software Engineer</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="UX Designer">UX Designer</option>
+              <option value="DevOps Engineer">DevOps Engineer</option>
+              <option value="QA Engineer">QA Engineer</option>
+              <option value="Marketing Manager">Marketing Manager</option>
+              <option value="Sales Representative">Sales Representative</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           <div>

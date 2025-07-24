@@ -1,4 +1,3 @@
-import React from "react";
 import CourseFilters from "../components/CourseFilters";
 import CoursesGrid from "../components/CoursesGrid";
 import MostPopularAndTopRated from "../components/MostPopularAndTopRated";

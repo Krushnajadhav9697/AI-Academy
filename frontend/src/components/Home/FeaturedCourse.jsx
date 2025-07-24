@@ -2,13 +2,14 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import { courseData } from "../lib/constsnt";
 
 const FeaturedCourse = () => {
-  const recentCourses = courseData.slice(-4).reverse();
+  const recentCourses = courseData.slice(-9);
 
   return (
     <section className="pt-4 pb-12 bg-white">
@@ -17,13 +18,13 @@ const FeaturedCourse = () => {
           modules={[Navigation]}
           slidesPerView={1}
           loop={true}
-          spaceBetween={0} // ✅ No gaps
+          spaceBetween={0}
           navigation={{
             nextEl: ".swiper-next-btn",
             prevEl: ".swiper-prev-btn",
           }}
           breakpoints={{
-            320: { spaceBetween: 10 }, // ✅ No gap on small screens
+            320: { spaceBetween: 10 },
             768: { spaceBetween: 10 },
             1024: { spaceBetween: 15 },
           }}
@@ -49,9 +50,11 @@ const FeaturedCourse = () => {
                     {course.description ||
                       `Gain practical skills to apply ${course.title} in real-world projects.`}
                   </p>
-                  <button className="bg-white text-black font-semibold px-4 py-2 sm:px-5 sm:py-3 rounded-lg shadow hover:bg-gray-100 transition">
-                    Enroll Now →
-                  </button>
+                  <Link to={`/courses/${course.id}`}>
+                    <button className="bg-white text-black font-semibold px-4 py-2 sm:px-5 sm:py-3 rounded-lg shadow hover:bg-gray-100 transition">
+                      Enroll Now →
+                    </button>
+                  </Link>
                 </div>
 
                 {/* Right Design */}

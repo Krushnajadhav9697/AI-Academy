@@ -2,6 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -40,7 +41,7 @@ const AiCoursesAndSpecializations = () => {
           breakpoints={{
             320: {
               slidesPerView: 1,
-              spaceBetween: 10, // ✅ No gap for small screens
+              spaceBetween: 10,
               centeredSlides: true,
             },
             375: {
@@ -60,13 +61,13 @@ const AiCoursesAndSpecializations = () => {
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 12,
+              spaceBetween: 1,
               centeredSlides: true,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 20, // ✅ Reduced gap for perfect fit
-              centeredSlides: false, // ✅ Prevents cut-off
+              spaceBetween: 2,
+              centeredSlides: false,
             },
             1440: {
               slidesPerView: 3,
@@ -76,7 +77,7 @@ const AiCoursesAndSpecializations = () => {
           }}
         >
           {courseData.map((course) => (
-            <SwiperSlide key={course.id} className="flex justify-center">
+            <SwiperSlide key={course.id} className="flex justify-center p-4 ">
               <CourseCard {...course} />
             </SwiperSlide>
           ))}
@@ -98,12 +99,11 @@ const AiCoursesAndSpecializations = () => {
       </div>
 
       {/* Button */}
-      <button
-        onClick={() => (window.location.href = "/courses")}
-        className="mt-6 sm:mt-8 px-4 sm:px-6 py-2 sm:py-3 bg-white text-indigo-600 font-medium rounded-md shadow hover:bg-gray-100 transition"
-      >
-        Explore All Courses
-      </button>
+      <Link to="/courses">
+        <button className="mt-6 sm:mt-8 px-4 sm:px-6 py-2 sm:py-3 bg-white text-indigo-600 font-medium rounded-md shadow hover:bg-gray-100 transition">
+          Explore All Courses
+        </button>
+      </Link>
     </section>
   );
 };

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { FaLinkedin } from "react-icons/fa";
+import { useGoogleLogin } from "@react-oauth/google";
+import { googleLogin } from "../../api/auth";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export default function SignInForm() {
     setMessage("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/token/", {
+      const response = await fetch("http://127.0.0.1:8000/users/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,6 +34,7 @@ export default function SignInForm() {
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
         localStorage.setItem("user_email", email.trim());
+        localStorage.setItem("user_full_name", data.user.full_name);
 
         navigate("/");
         window.location.reload();
@@ -49,10 +51,26 @@ export default function SignInForm() {
     setLoading(false);
   };
 
-  // Dummy handlers for social login
-  const handleGoogleLogin = () => {
-    alert("Google Login Clicked!");
-  };
+  const googleLoginPopup = useGoogleLogin({
+    flow: "implicit",
+    onSuccess: async ({ access_token }) => {
+      setLoading(true);
+      try {
+        const data = await googleLogin(access_token);
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("user_email", data.user.email);
+        localStorage.setItem("user_full_name", data.user.full_name);
+        navigate("/", { replace: true });
+        window.location.reload();
+      } catch (err) {
+        setMessage(err.message || "Google login failed");
+      } finally {
+        setLoading(false);
+      }
+    },
+    onError: () => setMessage("Google login cancelled"),
+  });
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f4f7fb] p-4">
@@ -64,7 +82,7 @@ export default function SignInForm() {
         {/* Social Login Buttons */}
         <div className="space-y-3">
           <button
-            onClick={handleGoogleLogin}
+            onClick={googleLoginPopup}
             className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-50 transition"
           >
             <FcGoogle size={20} />
