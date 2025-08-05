@@ -91,7 +91,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full shadow-sm bg-white sticky top-0 z-50">
-      <div className="flex items-center justify-between max-w-[1300px] mx-auto px-6 py-4">
+      <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 py-4">
         {/* Logo */}
         <Link to="/" onClick={() => setIsOpen(false)}>
           <div className="flex items-center space-x-2">
@@ -193,7 +193,7 @@ const Navbar = () => {
                   onClick={handleLogout}
                   className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
-                  Sign Out
+                  Logout
                 </button>
               </div>
             )}
@@ -215,34 +215,63 @@ const Navbar = () => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col p-6 space-y-4">
-          {/* Links */}
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b">
+          <h2 className="text-lg font-semibold text-rose-500">AI Academy</h2>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-gray-600 text-2xl hover:text-gray-800"
+          >
+            <FiX className="text-3xl text-gray-600 hover:text-rose-500 transition" />
+          </button>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="flex flex-col p-4 space-y-4">
           <Link
             to="/"
             onClick={() => setIsOpen(false)}
-            className={`hover:text-[#3D74B6] ${
+            className={`flex items-center gap-2 hover:text-[#3D74B6] ${
               isActive("/") ? "text-[#3D74B6] font-bold" : ""
             }`}
           >
-            Home
+            <span>&lt;</span> Home
           </Link>
           <Link
             to="/courses"
             onClick={() => setIsOpen(false)}
-            className={`hover:text-[#3D74B6] ${
+            className={`flex items-center gap-2 hover:text-[#3D74B6] ${
               isActive("/courses") ? "text-[#3D74B6] font-bold" : ""
             }`}
           >
-            Courses
+            <span>&lt;</span> Courses
           </Link>
           <Link
             to="/about"
             onClick={() => setIsOpen(false)}
-            className={`hover:text-[#3D74B6] ${
+            className={`flex items-center gap-2 hover:text-[#3D74B6] ${
               isActive("/about") ? "text-[#3D74B6] font-bold" : ""
             }`}
           >
-            About
+            <span>&lt;</span> About
+          </Link>
+          <Link
+            to="/playground"
+            onClick={() => setIsOpen(false)}
+            className={`flex items-center gap-2 hover:text-[#3D74B6] ${
+              isActive("/playground") ? "text-[#3D74B6] font-bold" : ""
+            }`}
+          >
+            <span>&lt;</span> Playground
+          </Link>
+          <Link
+            to="/join"
+            onClick={() => setIsOpen(false)}
+            className={`flex items-center gap-2 hover:text-[#3D74B6] ${
+              isActive("/join") ? "text-[#3D74B6] font-bold" : ""
+            }`}
+          >
+            <span>&lt;</span> Join
           </Link>
 
           {!isLoggedIn ? (
@@ -259,13 +288,13 @@ const Navbar = () => {
                 className="block px-2 py-1 rounded hover:bg-gray-100"
                 onClick={() => setIsOpen(false)}
               >
-                My Learning
+                &lt; My Learning
               </Link>
               <button
                 onClick={handleLogout}
                 className="w-full text-left px-2 py-1 rounded hover:bg-gray-100"
               >
-                Sign Out
+                &lt; Logout
               </button>
             </div>
           )}

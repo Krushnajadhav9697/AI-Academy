@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 const CourseCard = ({
   id,
   image,
-  title,
-  type,
-  description,
+  title = "Untitled Course",
+  type = "Course",
+  description = "",
   collaborators = [],
-  collaboratorName,
-  collaboratorLogo,
-  variant = "home", // default is home
+  variant = "home",
 }) => {
   const badgeColors = {
     Specialization: "bg-sky-500",
@@ -23,7 +21,6 @@ const CourseCard = ({
   return (
     <Link to={`/courses/${id}`} className="block">
       {variant === "main" ? (
-        // 🎯 MAIN Variant (used in CoursesGrid)
         <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 w-full hover:shadow-lg transition-transform duration-300 hover:scale-105">
           {/* Badge */}
           <span
@@ -33,7 +30,9 @@ const CourseCard = ({
           </span>
 
           {/* Title */}
-          <h3 className="text-gray-800 font-semibold text-lg mb-2">{title}</h3>
+          <h3 className="text-gray-800 font-semibold text-lg mb-2 line-clamp-2">
+            {title}
+          </h3>
 
           {/* Description */}
           <p className="text-gray-600 text-sm mb-3 line-clamp-3">
@@ -41,33 +40,25 @@ const CourseCard = ({
           </p>
 
           {/* Collaborators */}
-          <div className="flex items-center mt-2 space-x-2">
-            {collaborators.length > 0 ? (
-              collaborators.map((collab, index) => (
-                <div key={index} className="flex items-center space-x-1">
-                  <img
-                    src={collab.logo}
-                    alt={collab.name}
-                    className="w-6 h-6 rounded-full"
-                  />
-                </div>
-              ))
-            ) : (
-              <img
-                src={collaboratorLogo}
-                alt={collaboratorName}
-                className="w-6 h-6 rounded-full"
-              />
-            )}
-            <span className="text-gray-700 text-sm">
-              {collaborators.length > 0
-                ? collaborators.map((c) => c.name).join(", ")
-                : collaboratorName}
-            </span>
-          </div>
+          {collaborators.length > 0 && (
+            <div className="flex items-center mt-2 space-x-2">
+              {collaborators.map((collab, index) => (
+                <img
+                  key={index}
+                  src={collab.logo}
+                  alt={collab.name}
+                  className="w-6 h-6 rounded-full"
+                  title={collab.name}
+                />
+              ))}
+
+              <span className="text-gray-700 text-sm">
+                {collaborators.map((c) => c.name).join(", ")}
+              </span>
+            </div>
+          )}
         </div>
       ) : (
-        // 🎯 HOME Variant (used in home page carousel)
         <div
           className="bg-white rounded-xl shadow-sm overflow-hidden w-full flex flex-col
           max-w-[320px] sm:max-w-[350px] md:max-w-[300px] lg:max-w-[360px]

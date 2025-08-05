@@ -48,7 +48,7 @@ export default function CourseSuggestionList() {
       {/* Cards Row */}
       <div
         ref={containerRef}
-        className="flex overflow-x-auto space-x-4 scrollbar-hide scroll-smooth px-2"
+        className="flex overflow-x-auto space-x-4 scrollbar-hide scroll-smooth px-2 py-5"
       >
         {coursesYouMightLike.map((course) => (
           <div

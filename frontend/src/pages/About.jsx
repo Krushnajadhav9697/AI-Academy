@@ -53,10 +53,10 @@ export default function About() {
               <img
                 src={image.url}
                 alt={image.alt}
-                className="absolute block w-full h-full object-cover"
+                className="  w-full h-full object-cover"
               />
               {/* Dark overlay for better text visibility */}
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+              <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
             </div>
           ))}
 

@@ -11,6 +11,7 @@ import ActivateAccount from "./components/auth/ActivateAccount";
 import MyLearning from "./pages/MyLearning";
 import CourseDetailPage from "./components/courseDetails/CourseDetailPageMain";
 import About from "./pages/About";
+import CoursePage from "./components/courseDetails/CoursePage";
 
 const App = () => {
   return (
@@ -27,6 +28,8 @@ const App = () => {
         <Route path="/my-learnings" element={<MyLearning />} />
         <Route path="/activate/:uid/:token" element={<ActivateAccount />} />
         <Route path="/courses/:id" element={<CourseDetailPage />} />
+        <Route path="/courses/:id/content" element={<CoursePage />} />
+        {/* ✅ Add this */}
       </Routes>
     </Router>
   );

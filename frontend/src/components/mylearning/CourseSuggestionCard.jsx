@@ -14,7 +14,7 @@ export default function CourseSuggestionCard({
   const otherCollaborators = collaborators.slice(2);
 
   return (
-    <div className="group bg-white rounded-lg border border-gray-200 transition-all duration-300 cursor-pointer overflow-visible  w-[270px] hover:min-w-[300px] hover:w-[300px]">
+    <div className="group relative bg-white rounded-lg border border-gray-200 transition-all duration-300 cursor-pointer overflow-visible w-64 min-h-[22rem] flex-shrink-0 hover:scale-105 hover:min-h-[24rem] hover:w-72">
       {/* Image */}
       <div>
         <img
@@ -25,11 +25,9 @@ export default function CourseSuggestionCard({
       </div>
 
       {/* Content */}
-      <div className="px-4  flex flex-col justify-between">
-        {/* Type */}
+      <div className="px-4 flex flex-col justify-between">
         <p className="text-sm text-gray-500 mb-1">{type}</p>
 
-        {/* Title */}
         <h3
           className="text-base font-semibold leading-tight line-clamp-2 mb-1"
           style={{ minHeight: "3em" }}
@@ -37,9 +35,9 @@ export default function CourseSuggestionCard({
           {title}
         </h3>
 
-        {/* Description & Tags (shown on hover) */}
+        {/* Description & Tags */}
         <div className="max-h-0 overflow-hidden opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-300">
-          <p className="text-gray-700 text-sm mb-2 ">{description}</p>
+          <p className="text-gray-700 text-sm mb-2">{description}</p>
 
           <div className="flex flex-wrap gap-2 mb-2">
             {displayedTags.map((tag, index) => (
@@ -102,7 +100,7 @@ export default function CourseSuggestionCard({
           </div>
         </div>
 
-        {/* Buttons (hidden by default, revealed on hover) */}
+        {/* Buttons */}
         <div className="flex justify-between items-center mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-3">
           <button className="text-sm text-blue-600 font-semibold hover:underline">
             Enroll Now
